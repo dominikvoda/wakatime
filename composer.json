@@ -1,0 +1,21 @@
+{
+  "name": "wassy123/wakatime",
+  "description": "WakaTime API commands for collecting data",
+  "type": "project",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Dominik Voda",
+      "email": "d.voda94@gmail.com"
+    }
+  ],
+  "require": {
+    "symfony/console": "^3.1",
+    "symfony/yaml": "^3.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "WakaTime\\": "src/"
+    }
+  }
+}

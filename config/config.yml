@@ -1,0 +1,22 @@
+url: https://wakatime.com/api/v1/
+api_types:
+  current-user:
+    url: users/current
+    response_class: WakaTime\Response\CreateFileResponse
+    dir: /
+  stats-last-7-days:
+    url: users/current/stats/last_7_days
+    response_class: WakaTime\Response\CreateFileResponse
+    dir: /stats/last-7-days/
+  stats-last-30-days:
+    url: users/current/stats/last_30_days
+  stats-last-6-months:
+    url: users/current/stats/last_6_months
+  stats-last-year:
+    url: users/current/stats/last_year
+request:
+  timeout: 30
+response:
+  dir: responses
+  class: WakaTime\Response\CreateFileResponse
+
