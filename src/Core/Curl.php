@@ -77,10 +77,14 @@ class Curl
             if (count($parameters) > 0) {
                 $result .= "?";
                 foreach ($parameters as $key => $value) {
-                    $result .= $key . "=" . $value;
+                    $result .= $key . "=" . $value . "&";
                 }
             }
         }
-        return $result;
+        return rtrim($result, "&");
+    }
+
+    public function getFinalUrl(){
+        return $this->generateUrl($this->url, $this->urlParameters);
     }
 }

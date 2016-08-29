@@ -12,19 +12,19 @@
 
 namespace WakaTime\Response;
 
-use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Style\SymfonyStyle;
 use WakaTime\Config;
 
 class CreateFileResponse extends Response
 {
-    public function process($result, OutputInterface $output)
+    public function process($result, SymfonyStyle $io)
     {
         $fileName = $this->getFileName();
         $filePath = $this->getFilePath();
         $file = fopen($filePath, "w");
-        fwrite($file, $result);
+        fwrite($file, json_encode($result));
         fclose($file);
-        $output->writeln($fileName . " was created.");
+        $io->writeln($fileName . " was created.");
     }
 
     private function getFilePath(){

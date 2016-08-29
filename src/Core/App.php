@@ -28,6 +28,14 @@ class App
         $this->curl = new Curl($config);
     }
 
+    public function getConfig(){
+        return $this->config;
+    }
+
+    public function getCurl(){
+        return $this->curl;
+    }
+
     public function setUrlByType($type){
         $url = $this->config->get("url") . $this->generateUrlFromType($type);
         $this->curl->setUrl($url);
@@ -54,6 +62,18 @@ class App
 
         $class->setResponseType($type);
 
+        return $class;
+    }
+
+    public function getResultUrl(){
+        return $this->getCurl()->getFinalUrl();
+    }
+
+    public function getResultModel(){
+        $className = Config::getArrayValue($this->config->get("results"), "model_class");
+        $databaseClassName = Config::getArrayValue($this->config->get("results"), "database_class");
+        $databaseClass = new $databaseClassName($this->getConfig());
+        $class = new $className($databaseClass);
         return $class;
     }
 }

@@ -21,4 +21,5 @@ class CommandType
     const STATS_LAST_30_DAYS = "stats-last-30-days";
     const STATS_LAST_6_MONTH = "stats-last-6-months";
     const STATS_LAST_YEAR = "stats-last-year";
+    const SUMMARY = "summary";
 }

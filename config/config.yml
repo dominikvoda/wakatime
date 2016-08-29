@@ -6,7 +6,7 @@ api_types:
     dir: /
   stats-last-7-days:
     url: users/current/stats/last_7_days
-    response_class: WakaTime\Response\CreateFileResponse
+    response_class: WakaTime\Response\DataBaseResponse
     dir: /stats/last-7-days/
   stats-last-30-days:
     url: users/current/stats/last_30_days
@@ -14,9 +14,17 @@ api_types:
     url: users/current/stats/last_6_months
   stats-last-year:
     url: users/current/stats/last_year
+  summary:
+    url: users/current/summaries
+    response_class: WakaTime\Response\DataBaseResponse
 request:
   timeout: 30
 response:
   dir: responses
   class: WakaTime\Response\CreateFileResponse
-
+results:
+  model_class: WakaTime\Model\ResultModel
+  database_class: WakaTime\Database
+database:
+  projects_table: wt_projects
+  project_days_table: wt_project_days

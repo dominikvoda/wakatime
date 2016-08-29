@@ -13,8 +13,10 @@
 namespace WakaTime\Response;
 
 
-use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Style\SymfonyStyle;
 use WakaTime\Config;
+use WakaTime\Exceptions\ResponseException;
+use WakaTime\Interfaces\IResponse;
 
 abstract class Response implements IResponse
 {
@@ -29,17 +31,28 @@ abstract class Response implements IResponse
         $this->config = $config;
     }
 
-    public function beforeProcess(OutputInterface $output)
+    public function beforeProcess(SymfonyStyle $io)
     {
-        $output->writeln("Process START");
+        $io->writeln("\n<info>--- Process START ---</info>\n");
     }
 
-    public function afterProcess(OutputInterface $output)
+    public function afterProcess(SymfonyStyle $io)
     {
-        $output->writeln("Process END");
+        $io->writeln("<info>\n--- Process FINISH ---\n</info>");
     }
 
-    abstract public function process($result, OutputInterface $output);
+    public function verifyResponse($result, SymfonyStyle $io){
+        if(isset($result->error)){
+            throw new ResponseException($result->error);
+        }
+        $io->success("Connected");
+    }
+
+    public function successFinish(SymfonyStyle $io){
+        $io->success("Finished");
+    }
+
+    abstract public function process($result, SymfonyStyle $io);
 
     public function setResponseName($name)
     {

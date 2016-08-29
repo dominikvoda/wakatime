@@ -6,20 +6,14 @@
  * Written by Dominik Voda <d.voda94@gmail.com>
  *
  * Created by PhpStorm.
- * Date: 11.08.2016
- * Time: 23:30
+ * Date: 13.08.2016
+ * Time: 1:18
  */
 
 namespace WakaTime\Interfaces;
 
 
-use Symfony\Component\Console\Style\SymfonyStyle;
-
-interface IResponse
+interface IResultModel
 {
-    public function process($result, SymfonyStyle $io);
-
-    public function beforeProcess(SymfonyStyle $io);
-
-    public function afterProcess(SymfonyStyle $io);
+    public function getDataRangeProjectsData($start, $end);
 }

@@ -24,8 +24,11 @@ class Config
 
     public function __construct()
     {
-        $config = \Symfony\Component\Yaml\Yaml::parse(file_get_contents(__DIR__ . "/../../config/" . self::CONFIG_FILE));
-        $settings = \Symfony\Component\Yaml\Yaml::parse(file_get_contents(__DIR__ . "/../../config/" . self::SETTINGS_FILE));
+        $configFile = __DIR__ . "/../../config/" . self::CONFIG_FILE;
+        $settingsFile = __DIR__ . "/../../config/" . self::SETTINGS_FILE;
+
+        $config = \Symfony\Component\Yaml\Yaml::parse(file_get_contents($configFile));
+        $settings = \Symfony\Component\Yaml\Yaml::parse(file_get_contents($settingsFile));
 
         $this->config = array_merge($config, $settings);
     }

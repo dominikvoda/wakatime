@@ -28,7 +28,7 @@ abstract class StatsCommand extends BaseApiCommand
     {
         $project = $input->getArgument("project");
         if($project){
-            $this->app->setUrlParameters(['project' => $project]);
+            $this->getApp()->setUrlParameters(['project' => $project]);
         }
         parent::execute($input, $output);
     }
